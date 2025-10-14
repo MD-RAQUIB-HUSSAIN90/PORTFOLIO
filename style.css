@@ -1,52 +1,224 @@
-* {
+ * {
   margin: 0;
   padding: 0;
   font-family: "Merriweather", serif;
-  background-color: rgb(39, 37, 37);
+  background-color: rgb(64, 60, 60);
   color: white;
 }
+
 nav {
-  height: 4rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 1s ease forwards;
+}
+.nav-list {
+  list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-}
-.navigaiton {
-  width: 95%;
+  gap: 50px;
+  padding: 18px 0;
 }
 
-ul {
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  list-style: none;
-}
-
-ul li {
+.nav-list li {
+  position: relative;
+  font-weight: bold;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
   cursor: pointer;
+  color: #b7bfcb;
+  transition: all 0.4s ease;
 }
 
-#img {
-  height: 250px;
-  object-fit: cover;
-  clip-path: circle(40%);
+.nav-list li::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #42a5f5, #ab47bc);
+  transition: width 0.4s ease;
+}
+
+.nav-list li:hover::after {
+  width: 100%;
+}
+
+.nav-list li:hover {
+  transform: translateY(-3px);
 }
 
 .about-user {
-  height: 30rem;
-  width: 100%;
-  gap: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  padding: 80px 20px;
+  gap: 50px;
+  animation: fadeIn 1.5s ease;
 }
 
-.description {
-  font-size: 0.7rem;
-  transition: font 0.3s ease-in;
+#img {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  background: linear-gradient(135deg, #42a5f5, #ab47bc);
+  background-clip: padding-box;
+  box-shadow: 0 0 30px rgba(171, 71, 188, 0.4);
+  transition: all 0.6s ease;
+  animation: floatPic 4s ease-in-out infinite;
+}
+
+#img:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 45px rgba(66, 165, 245, 0.6);
+}
+
+/* ====== TYPING NAME EFFECT ====== */
+.about-user h1 {
+  font-size: 2.5rem;
+  color: #dadde0;
+  border-right: 3px solid #0d47a1;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(30) 1s forwards, blink 0.75s step-end infinite;
+}
+
+.name-description {
+  color: #d3cece;
+  margin-top: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 60%;
+  height: 10rem;
+  margin: auto;
+  padding: 1rem;
+}
+h2 {
+  text-decoration: underline;
+}
+
+.item-box {
+  height: 130vh;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: orange;
+  background-color: rgb(87, 82, 82);
+  height: 193px;
+  width: 360px;
+  font-size: 50px;
+
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-.description:hover {
-  font-size: 0.72rem;
+
+.box:hover {
+  transform: scale(1.07, 1.07);
+}
+
+.list-item {
+  height: 80vh;
+  width: 180vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+.form {
+  padding: 2rem;
+  align-items: center;
+}
+input {
+  width: 90%;
+  height: 2rem;
+}
+button {
+  padding: 4px 10px;
+} 
+
+
+
+
+
+@keyframes typing {
+  to {
+    width: 17ch;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes floatPic {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes glowMove {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(100px, 100px);
+  }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .about-user {
+    flex-direction: column;
+  }
+
+  .about-user h1 {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    width: 90%;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
