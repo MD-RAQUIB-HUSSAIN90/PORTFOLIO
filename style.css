@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Merriweather", serif;
+  background-color: rgb(39, 37, 37);
+  color: white;
+}
+nav {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+.navigaiton {
+  width: 95%;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  list-style: none;
+}
+
+ul li {
+  cursor: pointer;
+}
+
+#img {
+  height: 250px;
+  object-fit: cover;
+  clip-path: circle(40%);
+}
+
+.about-user {
+  height: 30rem;
+  width: 100%;
+  gap: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  font-size: 0.7rem;
+  transition: font 0.3s ease-in;
+  cursor: pointer;
+}
+.description:hover {
+  font-size: 0.72rem;
+}
